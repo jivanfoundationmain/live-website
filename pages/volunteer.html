@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer - Jivan Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root{--orange:#F7941D;--orange-dark:#e07c00;--blue:#0088CC;--dark:#1C2B3A;--text:#444;--light:#F8F9FA;--white:#fff;--border:#E8ECF0;}
+        *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+        body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden;}
+        header{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+        .navbar{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+        .logo img{height:52px;width:auto;}
+        .logo-text{display:flex;flex-direction:column;}
+        .logo-text strong{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--orange);line-height:1.1;}
+        .logo-text span{font-size:0.6rem;color:#999;letter-spacing:1.5px;text-transform:uppercase;}
+        nav ul{display:flex;list-style:none;gap:28px;}
+        nav a{text-decoration:none;color:var(--dark);font-weight:600;font-size:0.88rem;transition:color .3s;position:relative;}
+        nav a:hover,nav a.active{color:var(--orange);}
+        nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--orange);transition:width .3s;}
+        nav a:hover::after,nav a.active::after{width:100%;}
+        .donate-btn{background:var(--orange);color:var(--white)!important;padding:9px 22px;border-radius:50px;font-weight:700!important;transition:all .3s!important;}
+        .donate-btn:hover{background:var(--orange-dark)!important;}
+        .donate-btn::after{display:none!important;}
+        .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+        .hamburger span{width:24px;height:2.5px;background:var(--dark);border-radius:2px;transition:all .3s;}
+        .page-hero{background:linear-gradient(135deg,#1C2B3A 0%,#2c4a66 100%);padding:80px 24px;text-align:center;position:relative;overflow:hidden;}
+        .page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+        .breadcrumb{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:14px;position:relative;}
+        .breadcrumb a{color:var(--orange);text-decoration:none;}
+        .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--white);margin-bottom:12px;position:relative;}
+        .page-hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:560px;margin:0 auto;position:relative;}
+        .hero-accent{display:block;width:60px;height:4px;background:linear-gradient(90deg,var(--orange),var(--blue));border-radius:2px;margin:18px auto 0;}
+        section{padding:80px 24px;} .container{max-width:1200px;margin:0 auto;}
+        .section-tag{display:inline-block;background:rgba(247,148,29,0.1);color:var(--orange);font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:14px;border:1px solid rgba(247,148,29,0.25);}
+        .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--dark);margin-bottom:14px;line-height:1.2;}
+        .section-title span{color:var(--orange);} .divider{width:50px;height:4px;background:linear-gradient(90deg,var(--orange),var(--blue));border-radius:2px;margin:18px 0 36px;}
+        .section-sub{color:#777;line-height:1.8;}
+        footer{background:#1C2B3A;color:#BDC3C7;}
+        .footer-main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding:60px 24px 40px;}
+        .footer-brand img{height:50px;filter:brightness(0) invert(1);opacity:.85;}
+        .footer-brand p{margin-top:14px;font-size:0.83rem;line-height:1.8;color:#8e9faf;}
+        .footer-social{display:flex;gap:10px;margin-top:20px;}
+        .footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:#8e9faf;font-size:0.85rem;transition:all .3s;text-decoration:none;}
+        .footer-social a:hover{border-color:var(--orange);color:var(--orange);}
+        .footer-col h5{color:var(--white);font-size:0.9rem;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--orange);display:inline-block;}
+        .footer-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+        .footer-col a{text-decoration:none;color:#8e9faf;font-size:0.82rem;transition:color .3s;}
+        .footer-col a:hover{color:var(--orange);}
+        .footer-col .cline{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:0.82rem;}
+        .footer-col .cline i{color:var(--orange);margin-top:3px;}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:20px 24px;text-align:center;font-size:0.78rem;color:#5a6a7a;}
+        
+.vol-benefit{background:var(--white);border-radius:12px;padding:16px;border:1px solid var(--border);display:flex;align-items:center;gap:10px;font-size:0.82rem;font-weight:600;color:var(--dark);transition:all .3s;}
+.vol-benefit:hover{border-color:var(--orange);}
+.vol-benefit i{color:var(--orange);font-size:1rem;}
+.vol-form-wrap{background:var(--white);border-radius:20px;padding:36px;border:1px solid var(--border);box-shadow:0 8px 30px rgba(0,0,0,0.06);}
+.vol-form-wrap h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:24px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.form-group label{font-size:0.75rem;font-weight:700;color:var(--dark);}
+.form-group input,.form-group select,.form-group textarea{border:1.5px solid var(--border);border-radius:10px;padding:10px 14px;font-family:'Poppins',sans-serif;font-size:0.84rem;color:var(--dark);outline:none;transition:border-color .3s;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--orange);}
+.vol-submit{width:100%;background:linear-gradient(135deg,var(--orange),#e07c00);color:var(--white);border:none;padding:14px;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:0.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .3s;}
+.vol-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(247,148,29,0.4);}
+.vol-role{background:var(--white);border-radius:16px;padding:28px 24px;border:1px solid var(--border);text-align:center;transition:all .3s;}
+.vol-role:hover{border-color:var(--orange);transform:translateY(-4px);box-shadow:0 10px 30px rgba(247,148,29,0.1);}
+.vr-icon{width:52px;height:52px;border-radius:14px;background:rgba(247,148,29,0.1);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin:0 auto 16px;transition:all .3s;}
+.vol-role:hover .vr-icon{background:var(--orange);color:var(--white);}
+.vol-role h4{font-size:0.9rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+.vol-role p{font-size:0.8rem;line-height:1.7;color:#888;}
+@media(max-width:900px){section>div>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}section>div>div[style*="repeat(3,1fr)"]{grid-template-columns:1fr 1fr!important;}}
+@media(max-width:600px){section>div>div[style*="repeat(3,1fr)"]{grid-template-columns:1fr!important;}}
+
+        @media(max-width:768px){nav ul{display:none;}.hamburger{display:flex;}section{padding:55px 20px;}}
+    </style>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <a href="../index.html" class="logo">
+      <img src="../assets/images/logo.jpg" alt="Jivan Foundation">
+      <div class="logo-text"><strong>Jivan Foundation</strong><span>A perfect way to shape your life</span></div>
+    </a>
+    <nav><ul id="navMenu">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html">Programs</a></li>
+                    <li><a href="stories.html">Stories</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="donate.html" class="donate-btn">Donate</a></li>
+                </ul></nav>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+<section class="page-hero">
+  <div class="breadcrumb"><a href="../index.html">Home</a> / Volunteer</div>
+  <h1>Volunteer With <span>Us</span></h1>
+  <p>Give your time, talent and energy to help shape young futures — every volunteer hour creates lasting impact.</p>
+  <span class="hero-accent"></span>
+</section>
+
+<section style="background:var(--light);">
+<div class="container">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <span class="section-tag">Get Involved</span>
+      <h2 class="section-title">Why <span>Volunteer</span> With Us?</h2>
+      <div class="divider"></div>
+      <p style="line-height:1.9;margin-bottom:24px;">Volunteering with Jivan Foundation is about more than giving back — it's about being part of a movement that transforms lives. Whether you're a professional, a student, or a retiree, your skills and time are invaluable to us.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div class="vol-benefit"><i class="fas fa-certificate"></i><strong>Certificate of Recognition</strong></div>
+        <div class="vol-benefit"><i class="fas fa-network-wired"></i><strong>Build Your Network</strong></div>
+        <div class="vol-benefit"><i class="fas fa-star"></i><strong>Develop New Skills</strong></div>
+        <div class="vol-benefit"><i class="fas fa-heart"></i><strong>Meaningful Impact</strong></div>
+      </div>
+    </div>
+    <div class="vol-form-wrap">
+      <h3>Register as a Volunteer</h3>
+      <form onsubmit="this.querySelector('.vol-success').style.display='block';this.reset();return false;">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label>Phone</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="form-group"><label>Area of Interest</label>
+          <select><option>Teaching / Mentoring</option><option>Career Counselling</option><option>IT / Technology Support</option><option>Event Management</option><option>NSS Community Service</option><option>Administrative Support</option></select>
+        </div>
+        <div class="form-group"><label>Availability</label>
+          <select><option>Weekdays</option><option>Weekends</option><option>Both</option><option>Flexible</option></select>
+        </div>
+        <div class="form-group"><label>Brief Introduction</label><textarea rows="3" placeholder="Tell us about yourself and your experience..."></textarea></div>
+        <button type="submit" class="vol-submit"><i class="fas fa-paper-plane"></i> Submit Registration</button>
+        <div class="vol-success" style="display:none;margin-top:14px;padding:12px 18px;background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.3);border-radius:8px;font-size:0.84rem;color:#27AE60;">✓ Thank you for registering! We'll be in touch within 3 working days.</div>
+      </form>
+    </div>
+  </div>
+</div>
+</section>
+<section>
+<div class="container">
+  <div style="text-align:center;margin-bottom:48px;">
+    <span class="section-tag">Opportunities</span>
+    <h2 class="section-title">How You Can <span>Help</span></h2>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+    <div class="vol-role"><div class="vr-icon"><i class="fas fa-chalkboard-teacher"></i></div><h4>Guest Lecturer</h4><p>Share your industry expertise with students through one-off or regular sessions on your area of specialization.</p></div>
+    <div class="vol-role"><div class="vr-icon"><i class="fas fa-user-friends"></i></div><h4>Student Mentor</h4><p>Provide one-on-one guidance to help students with career decisions, skill development and personal growth.</p></div>
+    <div class="vol-role"><div class="vr-icon"><i class="fas fa-laptop"></i></div><h4>Tech Volunteer</h4><p>Help us build and maintain our digital infrastructure — websites, ERP systems, and computer lab support.</p></div>
+    <div class="vol-role"><div class="vr-icon"><i class="fas fa-calendar-check"></i></div><h4>Event Support</h4><p>Help organise and run events — from cultural fests to competitive exam coaching drives and NSS camps.</p></div>
+    <div class="vol-role"><div class="vr-icon"><i class="fas fa-globe"></i></div><h4>Outreach & Awareness</h4><p>Help us reach more students in rural and semi-urban areas through community awareness and enrolment drives.</p></div>
+    <div class="vol-role"><div class="vr-icon"><i class="fas fa-hand-holding-usd"></i></div><h4>Fundraising Support</h4><p>Help us secure more scholarships and resources by connecting us with potential donors and corporate sponsors.</p></div>
+  </div>
+</div>
+</section>
+
+<footer>
+  <div class="footer-main">
+    <div class="footer-brand">
+      <img src="../assets/images/logo.jpg" alt="Jivan Foundation">
+      <p>A premier educational institution dedicated to nurturing innovation, inclusivity, and lifelong learning in Kalyan, Maharashtra.</p>
+      <div class="footer-social">
+        <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>Quick Links</h5>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="programs.html">Programs</a></li>
+              <li><a href="stories.html">Success Stories</a></li>
+              <li><a href="events.html">Events</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="media.html">News &amp; Media</a></li>
+              <li><a href="partners.html">Partners</a></li>
+              <li><a href="careers.html">Careers</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul></div>
+    <div class="footer-col"><h5>Contact</h5>
+      <div class="cline"><i class="fas fa-map-marker-alt"></i><span>Kalyan, Maharashtra, India</span></div>
+      <div class="cline"><i class="fas fa-globe"></i><a href="https://jivanfoundation.in">jivanfoundation.in</a></div>
+      <div class="cline"><i class="fas fa-envelope"></i><span>info@jivanfoundation.in</span></div>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2026 Jivan Foundation. All Rights Reserved. | <a href="#" style="color:var(--orange);text-decoration:none;">Privacy Policy</a></div>
+</footer>
+<script>document.getElementById('hamburger').addEventListener('click',function(){{this.classList.toggle('active');document.getElementById('navMenu').classList.toggle('open');}});</script>
+</body></html>

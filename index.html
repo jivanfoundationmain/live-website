@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jivan Foundation - Premier educational institution nurturing innovation and inclusivity">
+    <meta name="theme-color" content="#FF6B35">
+    <meta property="og:title" content="Jivan Foundation">
+    <meta property="og:description" content="A premier institution that nurtures innovation, inclusivity, and lifelong learning">
+    <meta property="og:image" content="https://via.placeholder.com/1200x630?text=Jivan+Foundation">
+    
+    <title>Jivan Foundation - Premier Educational Institution</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #FF6B35;
+            --secondary-color: #2C3E50;
+            --accent-blue: #0088CC;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+            --dark-gray: #333333;
+            --text-color: #444444;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .logo i {
+            color: var(--primary-color);
+            font-size: 32px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .donate-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .donate-btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide-1 {
+            background: linear-gradient(135deg, #FF6B35 0%, #FF8C42 100%);
+        }
+
+        .hero-slide-2 {
+            background: linear-gradient(135deg, #0088CC 0%, #00A8E8 100%);
+        }
+
+        .hero-slide-3 {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+        }
+
+        .hero-slide-4 {
+            background: linear-gradient(135deg, #27AE60 0%, #2ECC71 100%);
+        }
+
+        .hero-content {
+            z-index: 5;
+            padding: 40px;
+            animation: slideInUp 0.8s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .hero-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid var(--white);
+        }
+
+        .dot.active {
+            background: var(--white);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== ABOUT SECTION ===== */
+        .about {
+            padding: 80px 20px;
+            background: var(--white);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .about-tagline {
+            color: var(--primary-color);
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .about-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 30px;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+
+        .read-more-btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        /* ===== MISSION & VISION ===== */
+        .mission-vision {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #34495E 100%);
+            color: var(--white);
+        }
+
+        .mission-vision-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .mission-box, .vision-box {
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            border-left: 5px solid var(--primary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .mission-box h3, .vision-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .mission-box p, .vision-box p {
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        /* ===== PROGRAMS SECTION ===== */
+        .programs {
+            padding: 80px 20px;
+            background: var(--light-gray);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .program-icon {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            color: var(--white);
+        }
+
+        .program-content {
+            padding: 30px;
+        }
+
+        .program-content h4 {
+            color: var(--secondary-color);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .program-content p {
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* ===== IMPACT COUNTER SECTION ===== */
+        .impact-counters {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #34495E 100%);
+            color: var(--white);
+        }
+
+        .impact-counters-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .counter-item {
+            padding: 30px;
+        }
+
+        .counter-number {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .counter-label {
+            font-size: 1.2em;
+            color: var(--white);
+        }
+
+        /* ===== STORIES SECTION ===== */
+        .stories {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .story-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .story-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3em;
+            color: var(--white);
+        }
+
+        .story-content {
+            padding: 25px;
+        }
+
+        .story-content h5 {
+            color: var(--secondary-color);
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .story-content p {
+            color: var(--text-color);
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /* ===== MEDIA SECTION ===== */
+        .media {
+            padding: 80px 20px;
+            background: var(--light-gray);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .media-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .media-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .media-date {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 15px 20px;
+            font-weight: 700;
+        }
+
+        .media-content {
+            padding: 25px;
+        }
+
+        .media-content h5 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .media-content p {
+            color: var(--text-color);
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        /* ===== PARTNERS SECTION ===== */
+        .partners {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .partners-carousel {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .partner-logo {
+            width: 150px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--light-gray), #EFEFEF);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9em;
+            color: var(--text-color);
+            text-align: center;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        /* ===== DONATE BANNER ===== */
+        .donate-banner {
+            padding: 60px 20px;
+            background: linear-gradient(135deg, var(--primary-color), #FF8C42);
+            color: var(--white);
+            text-align: center;
+            margin: 80px 0;
+        }
+
+        .donate-banner h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .donate-banner p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .donate-banner-btn {
+            background: var(--white);
+            color: var(--primary-color);
+            padding: 15px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .donate-banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 60px 20px 20px;
+            margin-top: 80px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.2em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #BDC3C7;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-contact {
+            margin-bottom: 15px;
+            color: #BDC3C7;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            color: #BDC3C7;
+        }
+
+        /* ===== BACK TO TOP BUTTON ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+
+        /* ===== WHATSAPP BUTTON ===== */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #25D366;
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 28px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* ===== COOKIE CONSENT ===== */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 998;
+        }
+
+        .cookie-consent.active {
+            transform: translateY(0);
+        }
+
+        .cookie-consent p {
+            flex: 1;
+            font-size: 0.95em;
+        }
+
+        .cookie-accept {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 10px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .cookie-accept:hover {
+            background: var(--accent-blue);
+        }
+
+        /* ===== FADE IN ON SCROLL ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(10px, 10px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            nav ul.mobile-nav {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            }
+
+            .hero-content h1 {
+                font-size: 2em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .mission-vision-container {
+                grid-template-columns: 1fr;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .impact-counters-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .counter-number {
+                font-size: 2em;
+            }
+
+            .stories-grid, .media-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-to-top, .whatsapp-btn {
+                width: 45px;
+                height: 45px;
+                bottom: 15px;
+                right: 15px;
+            }
+
+            .whatsapp-btn {
+                bottom: 70px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+
+            .partners-carousel {
+                gap: 20px;
+            }
+
+            .partner-logo {
+                width: 120px;
+                height: 80px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .logo i {
+                font-size: 24px;
+            }
+
+            .donate-btn {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero-content {
+                padding: 20px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5em;
+            }
+
+            .hero-content p {
+                font-size: 0.9em;
+            }
+
+            .hero-btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .about, .programs, .stories, .media, .partners {
+                padding: 40px 15px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .donate-banner {
+                padding: 40px 15px;
+            }
+
+            .donate-banner h2 {
+                font-size: 1.5em;
+            }
+
+            .donate-banner p {
+                font-size: 1em;
+            }
+
+            .impact-counters {
+                padding: 40px 15px;
+            }
+
+            .impact-counters-container {
+                grid-template-columns: 1fr;
+            }
+
+            .counter-number {
+                font-size: 1.8em;
+            }
+
+            .cookie-consent {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+
+            .cookie-consent p {
+                font-size: 0.85em;
+            }
+
+            .cookie-accept {
+                padding: 8px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER & NAVIGATION ===== -->
+    <header>
+        <div class="navbar-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo.jpg" height=100 width=200 alt="Jivan Foundation"
+     title="Jivan Foundation">
+            </a>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="pages/about.html">About</a></li>
+                    <li><a href="pages/programs.html">Programs</a></li>
+                    <li><a href="pages/stories.html">Stories</a></li>
+                    <li><a href="pages/events.html">Events</a></li>
+                    <li><a href="pages/gallery.html">Gallery</a></li>
+                    <li><a href="pages/media.html">Media</a></li>
+                    <li><a href="pages/partners.html">Partners</a></li>
+                    <li><a href="pages/contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="pages/donate.html" class="donate-btn">Donate Now</a>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SLIDER ===== -->
+    <section class="hero">
+        <div class="hero-slider">
+            <!-- EDIT: Update hero slide content -->
+            <div class="hero-slide active hero-slide-1">
+                <div class="hero-content">
+                    <h1>Nurturing Excellence & Innovation</h1>
+                    <p>A Premier Educational Hub</p>
+                    <a href="pages/about.html" class="hero-btn">Learn More</a>
+                    <a href="pages/donate.html" class="hero-btn" style="background: var(--accent-blue);">Get Involved</a>
+                </div>
+            </div>
+
+            <div class="hero-slide hero-slide-2">
+                <div class="hero-content">
+                    <h1>Quality Education for All</h1>
+                    <p>Bridging Educational Gaps in Communities</p>
+                    <a href="pages/programs.html" class="hero-btn">Explore Programs</a>
+                    <a href="pages/donate.html" class="hero-btn" style="background: var(--primary-color);">Support Us</a>
+                </div>
+            </div>
+
+            <div class="hero-slide hero-slide-3">
+                <div class="hero-content">
+                    <h1>Empowering Future Leaders</h1>
+                    <p>Skill-Oriented Learning for Career Excellence</p>
+                    <a href="pages/stories.html" class="hero-btn">See Our Impact</a>
+                    <a href="pages/donate.html" class="hero-btn" style="background: var(--accent-blue);">Make Difference</a>
+                </div>
+            </div>
+
+            <div class="hero-slide hero-slide-4">
+                <div class="hero-content">
+                    <h1>Social Responsibility & Innovation</h1>
+                    <p>Contributing to Regional Development</p>
+                    <a href="pages/about.html" class="hero-btn">Know Our Vision</a>
+                    <a href="pages/donate.html" class="hero-btn" style="background: var(--primary-color);">Contribute Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-dots">
+            <span class="dot active" onclick="currentSlide(0)"></span>
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="about" id="about">
+        <h2 class="section-title">About Jivan Foundation</h2>
+        <div class="about-content fade-in">
+            <p class="about-tagline">A perfect way to shape your life...</p>
+            <!-- EDIT: Update about text -->
+            <p class="about-text">
+                Jivan Foundation envisions creating a premier educational institution that delivers high-quality, 
+                accessible, and skill-oriented education. We bridge educational gaps, especially for students from tribal, OBC, 
+                and middle-class communities, while preparing them for both higher education and direct employment opportunities.
+            </p>
+            <p class="about-text">
+                Our initiative aligns with the "Skill India" and "Make in India" movements, ensuring that local talent is nurtured 
+                into skilled manpower contributing to national development.
+            </p>
+            <a href="pages/stories.html" class="read-more-btn">Read Full Story</a>
+        </div>
+    </section>
+
+    <!-- ===== MISSION & VISION ===== -->
+    <section class="mission-vision" id="mission">
+        <div class="mission-vision-container">
+            <div class="mission-box fade-in">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide a nurturing and intellectually stimulating environment that fosters academic excellence with 
+                    equal access for diverse socio-economic groups. We offer career-oriented, self-financing, and job-relevant 
+                    courses while developing students into lifelong learners, ethical leaders, and skilled professionals.
+                </p>
+            </div>
+            <div class="vision-box fade-in">
+                <h3>Our Vision</h3>
+                <p>
+                    To be a premier institution that nurtures innovation, inclusivity, and lifelong learning, empowering 
+                    students to excel globally while serving locally. We aspire to become a model institution that shapes 
+                    employable graduates equipped with 21st-century skills and contributes to regional socio-economic development.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROGRAMS SECTION ===== -->
+    <section class="programs" id="programs">
+        <h2 class="section-title">Our Programs</h2>
+        <div class="programs-grid">
+            <!-- EDIT: Update program details -->
+            <div class="program-card fade-in">
+                <div class="program-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <div class="program-content">
+                    <h4>Junior College</h4>
+                    <p>Comprehensive curriculum integrating modern skill-based education across Arts, Commerce, and Science streams with industry-relevant modules.</p>
+                    <a href="pages/programs.html" class="read-more-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="program-card fade-in">
+                <div class="program-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="program-content">
+                    <h4>Technology Programs</h4>
+                    <p>Computer Science, Information Technology, and Artificial Intelligence degree programs with hands-on training and industry partnerships.</p>
+                    <a href="pages/programs.html" class="read-more-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="program-card fade-in">
+                <div class="program-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="program-content">
+                    <h4>Professional Courses</h4>
+                    <p>BMS, BBI, BAF, and Mass Media programs designed for direct employment and entrepreneurship opportunities.</p>
+                    <a href="pages/programs.html" class="read-more-btn">Learn More</a>
+                </div>
+            </div>
+
+            <div class="program-card fade-in">
+                <div class="program-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="program-content">
+                    <h4>Community Support</h4>
+                    <p>Night College for working students, scholarships for economically weaker sections, and mentoring programs for holistic development.</p>
+                    <a href="pages/programs.html" class="read-more-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== IMPACT COUNTERS ===== -->
+    <section class="impact-counters" id="impact">
+        <h2 class="section-title" style="color: var(--white);">Our Impact</h2>
+        <div class="impact-counters-container">
+            <!-- EDIT: Update counter numbers -->
+            <div class="counter-item fade-in">
+                <div class="counter-number" data-target="5000">0</div>
+                <div class="counter-label">Students Empowered</div>
+            </div>
+
+            <div class="counter-item fade-in">
+                <div class="counter-number" data-target="250">0</div>
+                <div class="counter-label">Faculty Members</div>
+            </div>
+
+            <div class="counter-item fade-in">
+                <div class="counter-number" data-target="50">0</div>
+                <div class="counter-label">Industry Partners</div>
+            </div>
+
+            <div class="counter-item fade-in">
+                <div class="counter-number" data-target="95">0</div>
+                <div class="counter-label">% Success Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STORIES SECTION ===== -->
+    <section class="stories" id="stories">
+        <h2 class="section-title">Stories of Change</h2>
+        <div class="stories-grid">
+            <!-- EDIT: Update story details -->
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div class="story-content">
+                    <h5>Priya's Journey to Success</h5>
+                    <p>From a tribal background, Priya completed her senior college through our scholarship program and is now pursuing Computer Science, working toward her dream of becoming a software engineer.</p>
+                    <a href="pages/stories.html" class="read-more-btn">Read Story</a>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="story-content">
+                    <h5>Rajesh's Career Transformation</h5>
+                    <p>Working full-time, Rajesh enrolled in our Night College and completed his degree while developing new skills. He was placed in his dream company within 3 months.</p>
+                    <a href="pages/stories.html" class="read-more-btn">Read Story</a>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="story-content">
+                    <h5>Community Impact Initiative</h5>
+                    <p>Our NSS program has organized 15+ community service camps, reaching over 2,000 villagers and creating sustainable livelihood opportunities through skill training.</p>
+                    <a href="pages/stories.html" class="read-more-btn">Read Story</a>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <div class="story-content">
+                    <h5>Academic Excellence Recognition</h5>
+                    <p>Our students have consistently achieved 95%+ pass rates and won multiple state-level academic competitions, demonstrating the quality of our educational approach.</p>
+                    <a href="pages/stories.html" class="read-more-btn">Read Story</a>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="story-content">
+                    <h5>Mental Health & Wellness</h5>
+                    <p>Through our holistic wellness program, we've supported 500+ students with counseling, yoga sessions, and fitness programs for balanced development.</p>
+                    <a href="pages/stories.html" class="read-more-btn">Read Story</a>
+                </div>
+            </div>
+
+            <div class="story-card fade-in">
+                <div class="story-image">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="story-content">
+                    <h5>Entrepreneurship Success</h5>
+                    <p>Five students graduated from our incubation program and launched successful startups, creating employment opportunities for 50+ individuals in their communities.</p>
+                    <a href="pages/stories.html" class="read-more-btn">Read Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MEDIA SECTION ===== -->
+    <section class="media" id="media">
+        <h2 class="section-title">Latest News & Media</h2>
+        <div class="media-grid">
+            <!-- EDIT: Update news/media -->
+            <div class="media-card fade-in">
+                <div class="media-date">March 2, 2026</div>
+                <div class="media-content">
+                    <h5>New AI Lab Inaugurated</h5>
+                    <p>Our state-of-the-art Artificial Intelligence laboratory was inaugurated with industry leaders, equipped with cutting-edge technology for hands-on learning.</p>
+                    <a href="pages/media.html" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+
+            <div class="media-card fade-in">
+                <div class="media-date">February 25, 2026</div>
+                <div class="media-content">
+                    <h5>Industry Partnership Signed</h5>
+                    <p>Signed MoUs with 5 leading IT companies for internship programs and direct placement opportunities for our final-year students.</p>
+                    <a href="pages/media.html" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+
+            <div class="media-card fade-in">
+                <div class="media-date">February 20, 2026</div>
+                <div class="media-content">
+                    <h5>National Award for Social Impact</h5>
+                    <p>Jivan Foundation recognized with the National Excellence Award for educational innovation and community development initiatives.</p>
+                    <a href="pages/media.html" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+
+            <div class="media-card fade-in">
+                <div class="media-date">February 15, 2026</div>
+                <div class="media-content">
+                    <h5>Students Excel in National Exam</h5>
+                    <p>20 students qualified for prestigious national competitive exams. Three achieved ranks in top 100, showcasing academic excellence.</p>
+                    <a href="pages/media.html" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+
+            <div class="media-card fade-in">
+                <div class="media-date">February 10, 2026</div>
+                <div class="media-content">
+                    <h5>Digital Literacy Program Launched</h5>
+                    <p>Launched free digital literacy program for 500 villagers in surrounding communities, promoting technological empowerment.</p>
+                    <a href="pages/media.html" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+
+            <div class="media-card fade-in">
+                <div class="media-date">February 5, 2026</div>
+                <div class="media-content">
+                    <h5>Scholarship Distribution Drive</h5>
+                    <p>Distributed scholarships worth ₹50 lakh to 200 deserving students from economically weaker sections across all streams.</p>
+                    <a href="pages/media.html" class="read-more-btn">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PARTNERS SECTION ===== -->
+    <section class="partners" id="partners">
+        <h2 class="section-title">Our Partners & Associates</h2>
+        <div class="partners-carousel">
+            <!-- EDIT: Update partner logos -->
+            <div class="partner-logo fade-in">Partner 1</div>
+            <div class="partner-logo fade-in">Partner 2</div>
+            <div class="partner-logo fade-in">Partner 3</div>
+            <div class="partner-logo fade-in">Partner 4</div>
+            <div class="partner-logo fade-in">Partner 5</div>
+            <div class="partner-logo fade-in">Partner 6</div>
+        </div>
+    </section>
+
+    <!-- ===== DONATE BANNER ===== -->
+    <section class="donate-banner" id="donate">
+        <h2>Help Us Change More Lives</h2>
+        <p>Your contribution makes a direct impact on students' futures and community development</p>
+        <!-- EDIT: Update donation link -->
+        <a href="pages/donate.html" class="donate-banner-btn">Donate Now</a>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h4>About Jivan Foundation</h4>
+                <p style="color: #BDC3C7; line-height: 1.8;">
+                    A premier educational institution dedicated to nurturing innovation, inclusivity, and lifelong learning. 
+                    We empower students to excel globally while contributing to local communities.
+                </p>
+                <div class="social-icons">
+                    <!-- EDIT: Update social media links -->
+                    <a href="[FACEBOOK_URL]" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="[INSTAGRAM_URL]" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="[TWITTER_URL]" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="[YOUTUBE_URL]" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="pages/about.html">About Us</a></li>
+                    <li><a href="pages/programs.html">Programs</a></li>
+                    <li><a href="pages/stories.html">Success Stories</a></li>
+                    <li><a href="pages/events.html">Events</a></li>
+                    <li><a href="pages/gallery.html">Gallery</a></li>
+                    <li><a href="pages/media.html">News &amp; Media</a></li>
+                    <li><a href="pages/partners.html">Partners</a></li>
+                    <li><a href="pages/careers.html">Careers</a></li>
+                    <li><a href="pages/donate.html">Donate</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <!-- EDIT: Update contact details -->
+                <div class="footer-contact">
+                    <i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--primary-color);"></i>
+                    [ADDRESS]<br>
+                    Kalyan, India
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-phone" style="margin-right: 10px; color: var(--primary-color);"></i>
+                    <a href="tel:[PHONE]" style="color: #BDC3C7; text-decoration: none;">[PHONE]</a>
+                </div>
+                <div class="footer-contact">
+                    <i class="fas fa-envelope" style="margin-right: 10px; color: var(--primary-color);"></i>
+                    <a href="mailto:[EMAIL]" style="color: #BDC3C7; text-decoration: none;">[EMAIL]</a>
+                </div>
+                <div class="footer-contact" style="margin-top: 15px;">
+                    <a href="https://jivanfoundation.in" style="color: var(--primary-color); text-decoration: none;">
+                        <i class="fas fa-globe"></i> jivanfoundation.in
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Jivan Foundation. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP BUTTON ===== -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- ===== WHATSAPP BUTTON ===== -->
+    <!-- EDIT: Update WhatsApp number -->
+    <a href="https://wa.me/[WHATSAPP_NUMBER]?text=Hello%20Jivan%20Foundation" target="_blank" class="whatsapp-btn" title="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- ===== COOKIE CONSENT ===== -->
+    <div class="cookie-consent" id="cookieConsent">
+        <p>We use cookies to enhance your experience. By continuing to browse, you agree to our use of cookies.</p>
+        <button class="cookie-accept" onclick="acceptCookies()">Accept</button>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ===== HERO SLIDER =====
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+            showSlide(currentSlideIndex);
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+        }
+
+        // Auto-rotate slider every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // ===== STICKY HEADER =====
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // ===== HAMBURGER MENU =====
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('mobile-nav');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('mobile-nav');
+            });
+        });
+
+        // ===== BACK TO TOP BUTTON =====
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // ===== FADE IN ON SCROLL =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            observer.observe(element);
+        });
+
+        // ===== ANIMATED COUNTERS =====
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.parentElement.classList.contains('counter-item') && element.textContent.includes('%') ? '%' : '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        }
+
+        // Observe counter elements for animation
+        const counterObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counterElements = entry.target.querySelectorAll('[data-target]');
+                    counterElements.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-target'));
+                        animateCounter(counter, target);
+                    });
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        const impactSection = document.getElementById('impact');
+        if (impactSection) {
+            counterObserver.observe(impactSection);
+        }
+
+        // ===== COOKIE CONSENT =====
+        const cookieConsent = document.getElementById('cookieConsent');
+
+        function acceptCookies() {
+            localStorage.setItem('cookieAccepted', 'true');
+            cookieConsent.classList.remove('active');
+        }
+
+        // Check if cookies were previously accepted
+        if (!localStorage.getItem('cookieAccepted')) {
+            setTimeout(() => {
+                cookieConsent.classList.add('active');
+            }, 2000);
+        }
+
+        // ===== SCROLL TO ANCHOR LINKS =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#' && document.querySelector(targetId)) {
+                    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===== SMOOTH PAGE LOAD =====
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+    </script>
+</body>
+</html>

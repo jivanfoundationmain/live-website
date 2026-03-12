@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - Jivan Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root { --orange:#F7941D; --orange-dark:#e07c00; --blue:#0088CC; --dark:#1C2B3A; --text:#444; --light:#F8F9FA; --white:#fff; --border:#E8ECF0; }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden;}
+        header{position:sticky;top:0;z-index:1000;background:var(--white);box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+        .navbar{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;}
+        .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+        .logo img{height:52px;width:auto;}
+        .logo-text{display:flex;flex-direction:column;}
+        .logo-text strong{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--orange);line-height:1.1;}
+        .logo-text span{font-size:0.6rem;color:#999;letter-spacing:1.5px;text-transform:uppercase;}
+        nav ul{display:flex;list-style:none;gap:28px;}
+        nav a{text-decoration:none;color:var(--dark);font-weight:600;font-size:0.88rem;transition:color .3s;position:relative;}
+        nav a:hover,nav a.active{color:var(--orange);}
+        nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--orange);transition:width .3s;}
+        nav a:hover::after,nav a.active::after{width:100%;}
+        .donate-btn{background:var(--orange);color:var(--white)!important;padding:9px 22px;border-radius:50px;font-weight:700!important;transition:all .3s!important;}
+        .donate-btn:hover{background:var(--orange-dark)!important;}
+        .donate-btn::after{display:none!important;}
+        .hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+        .hamburger span{width:24px;height:2.5px;background:var(--dark);border-radius:2px;}
+
+        .page-hero{background:linear-gradient(135deg,#1C2B3A 0%,#2c4a66 100%);padding:80px 24px;text-align:center;position:relative;overflow:hidden;}
+        .page-hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");}
+        .breadcrumb{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:14px;position:relative;}
+        .breadcrumb a{color:var(--orange);text-decoration:none;}
+        .page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);color:var(--white);margin-bottom:12px;position:relative;}
+        .page-hero p{color:rgba(255,255,255,0.65);font-size:1rem;max-width:560px;margin:0 auto;position:relative;}
+        .hero-accent{display:block;width:60px;height:4px;background:linear-gradient(90deg,var(--orange),var(--blue));border-radius:2px;margin:18px auto 0;}
+        section{padding:80px 24px;}
+        .container{max-width:1200px;margin:0 auto;}
+        .section-tag{display:inline-block;background:rgba(247,148,29,0.1);color:var(--orange);font-size:0.72rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:50px;margin-bottom:14px;border:1px solid rgba(247,148,29,0.25);}
+        .section-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);color:var(--dark);margin-bottom:14px;line-height:1.2;}
+        .section-title span{color:var(--orange);}
+        .divider{width:50px;height:4px;background:linear-gradient(90deg,var(--orange),var(--blue));border-radius:2px;margin:18px 0 36px;}
+
+        /* FILTER TABS */
+        .filter-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+        .tab-btn{padding:10px 24px;border-radius:50px;border:2px solid var(--border);background:var(--white);color:var(--dark);font-weight:600;font-size:0.83rem;cursor:pointer;transition:all .3s;}
+        .tab-btn.active,.tab-btn:hover{border-color:var(--orange);background:var(--orange);color:var(--white);}
+
+        /* JUNIOR SECTION */
+        .junior-bg{background:var(--light);}
+        .streams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px;}
+        .stream-card{background:var(--white);border-radius:20px;padding:32px 28px;border:2px solid var(--border);transition:all .3s;position:relative;overflow:hidden;}
+        .stream-card::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;}
+        .stream-card.science::before{background:linear-gradient(90deg,#0088CC,#00AAFF);}
+        .stream-card.commerce::before{background:linear-gradient(90deg,#F7941D,#FFB347);}
+        .stream-card.arts::before{background:linear-gradient(90deg,#9B59B6,#BB8FCE);}
+        .stream-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.1);}
+        .stream-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;}
+        .science .stream-icon{background:rgba(0,136,204,0.1);color:var(--blue);}
+        .commerce .stream-icon{background:rgba(247,148,29,0.1);color:var(--orange);}
+        .arts .stream-icon{background:rgba(155,89,182,0.1);color:#9B59B6;}
+        .stream-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+        .stream-card .fee-badge{display:inline-block;background:rgba(247,148,29,0.1);color:var(--orange);font-size:0.75rem;font-weight:700;padding:4px 12px;border-radius:50px;margin-bottom:14px;}
+        .stream-card p{font-size:0.83rem;line-height:1.7;color:#777;}
+        .stream-subjects{margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+        .subject-tag{font-size:0.75rem;color:var(--dark);display:flex;align-items:center;gap:8px;}
+        .subject-tag i{color:var(--orange);font-size:0.65rem;}
+
+        /* DEGREE PROGRAMS */
+        .degree-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+        .degree-card{background:var(--white);border-radius:20px;border:1px solid var(--border);overflow:hidden;transition:all .3s;}
+        .degree-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.1);}
+        .degree-header{padding:24px 24px 0;}
+        .degree-cat{font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--orange);margin-bottom:8px;}
+        .degree-card h3{font-size:1rem;font-weight:700;color:var(--dark);line-height:1.3;margin-bottom:4px;}
+        .degree-card .degree-sub{font-size:0.78rem;color:#999;}
+        .degree-body{padding:20px 24px;}
+        .degree-card p{font-size:0.82rem;line-height:1.7;color:#777;margin-bottom:14px;}
+        .degree-meta{display:flex;gap:16px;flex-wrap:wrap;}
+        .meta-item{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:#888;}
+        .meta-item i{color:var(--orange);}
+        .degree-footer{padding:16px 24px 24px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);margin-top:4px;}
+        .degree-fee{font-size:1rem;font-weight:800;color:var(--dark);}
+        .degree-fee small{font-size:0.68rem;color:#999;font-weight:400;display:block;}
+        .apply-link{font-size:0.78rem;font-weight:700;color:var(--orange);text-decoration:none;display:flex;align-items:center;gap:4px;transition:gap .2s;}
+        .apply-link:hover{gap:8px;}
+
+        /* SUPPORT SERVICES */
+        .support-bg{background:var(--light);}
+        .support-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+        .support-card{background:var(--white);border-radius:16px;padding:28px 22px;border:1px solid var(--border);text-align:center;transition:all .3s;}
+        .support-card:hover{border-color:var(--orange);box-shadow:0 8px 30px rgba(247,148,29,0.1);transform:translateY(-4px);}
+        .support-icon{width:52px;height:52px;border-radius:14px;background:rgba(247,148,29,0.1);color:var(--orange);display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin:0 auto 16px;transition:all .3s;}
+        .support-card:hover .support-icon{background:var(--orange);color:var(--white);}
+        .support-card h4{font-size:0.88rem;font-weight:700;color:var(--dark);margin-bottom:8px;}
+        .support-card p{font-size:0.78rem;line-height:1.7;color:#888;}
+
+        /* FEES TABLE */
+        .fees-bg{background:var(--dark);}
+        .fees-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+        .fees-block h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:20px;padding-bottom:12px;border-bottom:2px solid rgba(247,148,29,0.3);}
+        .fees-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.06);}
+        .fees-row:last-child{border-bottom:none;}
+        .fees-row .course-name{font-size:0.88rem;color:rgba(255,255,255,0.8);}
+        .fees-row .course-fee{font-size:0.95rem;font-weight:700;color:var(--orange);}
+        .fees-row .course-dur{font-size:0.72rem;color:rgba(255,255,255,0.4);margin-left:8px;}
+        .fees-note{margin-top:24px;padding:16px;background:rgba(247,148,29,0.08);border-radius:12px;border:1px solid rgba(247,148,29,0.2);font-size:0.8rem;color:rgba(255,255,255,0.6);line-height:1.7;}
+        .fees-note strong{color:var(--orange);}
+
+        /* QUALITY & SUSTAINABILITY */
+        .qs-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+        .qs-card{background:var(--white);border-radius:20px;padding:36px;border:1px solid var(--border);}
+        .qs-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
+        .qs-card h3 i{color:var(--orange);}
+        .qs-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;}
+        .qs-list li{display:flex;gap:10px;font-size:0.84rem;color:#666;line-height:1.6;}
+        .qs-list li i{color:var(--blue);margin-top:3px;flex-shrink:0;}
+
+        /* CTA */
+        .cta-section{background:linear-gradient(135deg,var(--orange),#e07c00);text-align:center;padding:70px 24px;}
+        .cta-section h2{font-family:'Playfair Display',serif;font-size:2.2rem;color:var(--white);margin-bottom:14px;}
+        .cta-section p{color:rgba(255,255,255,0.85);margin-bottom:32px;font-size:1rem;}
+        .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+        .cta-btn{padding:14px 36px;border-radius:50px;font-weight:700;text-decoration:none;font-size:0.9rem;transition:all .3s;}
+        .cta-btn.primary{background:var(--white);color:var(--orange);}
+        .cta-btn.secondary{border:2px solid rgba(255,255,255,0.6);color:var(--white);}
+        .cta-btn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(0,0,0,0.2);}
+
+        footer{background:#1C2B3A;color:#BDC3C7;}
+        .footer-main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding:60px 24px 40px;}
+        .footer-brand img{height:50px;filter:brightness(0) invert(1);opacity:.85;}
+        .footer-brand p{margin-top:14px;font-size:0.83rem;line-height:1.8;color:#8e9faf;}
+        .footer-social{display:flex;gap:10px;margin-top:20px;}
+        .footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;color:#8e9faf;font-size:0.85rem;transition:all .3s;text-decoration:none;}
+        .footer-social a:hover{border-color:var(--orange);color:var(--orange);}
+        .footer-col h5{color:var(--white);font-size:0.9rem;font-weight:700;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--orange);display:inline-block;}
+        .footer-col ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:8px;}
+        .footer-col a{text-decoration:none;color:#8e9faf;font-size:0.82rem;transition:color .3s;}
+        .footer-col a:hover{color:var(--orange);}
+        .footer-col .contact-line{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;font-size:0.82rem;}
+        .footer-col .contact-line i{color:var(--orange);margin-top:3px;}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,0.06);padding:20px 24px;text-align:center;font-size:0.78rem;color:#5a6a7a;}
+
+        @media(max-width:900px){.streams-grid,.degree-grid,.support-grid,.fees-grid,.qs-grid{grid-template-columns:1fr 1fr;}.footer-main{grid-template-columns:1fr;gap:30px;}}
+        @media(max-width:600px){nav ul{display:none;}.hamburger{display:flex;}.streams-grid,.degree-grid,.support-grid{grid-template-columns:1fr;}.fees-grid,.qs-grid{grid-template-columns:1fr;}.section{padding:60px 20px;}}
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="navbar">
+        <a href="../index.html" class="logo">
+            <img src="../assets/images/logo.jpg" alt="Jivan Foundation">
+            <div class="logo-text"><strong>Jivan Foundation</strong><span>A perfect way to shape your life</span></div>
+        </a>
+        <nav><ul id="navMenu">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="programs.html" class="active">Programs</a></li>
+                    <li><a href="stories.html">Stories</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="media.html">Media</a></li>
+                    <li><a href="partners.html">Partners</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="donate.html" class="donate-btn">Donate</a></li>
+                </ul></nav>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="breadcrumb"><a href="../index.html">Home</a> / Programs</div>
+    <h1>Our Academic Programs</h1>
+    <p>From Junior College to Degree courses — career-focused, skill-oriented education for every aspiration.</p>
+    <span class="hero-accent"></span>
+</section>
+
+<!-- JUNIOR COLLEGE -->
+<section class="junior-bg">
+    <div class="container">
+        <span class="section-tag">11th &amp; 12th Standard</span>
+        <h2 class="section-title">Junior College <span>Streams</span></h2>
+        <div class="divider"></div>
+        <div class="streams-grid">
+            <div class="stream-card science">
+                <div class="stream-icon"><i class="fas fa-flask"></i></div>
+                <h3>Science Stream</h3>
+                <span class="fee-badge">₹50,000 / 2 Years</span>
+                <p>Comprehensive science education covering Physics, Chemistry, Biology, and Mathematics with modern laboratory facilities.</p>
+                <div class="stream-subjects">
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Physics & Chemistry</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Biology / Mathematics</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> English & EVS</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> IT & Computer Science</div>
+                </div>
+            </div>
+            <div class="stream-card commerce">
+                <div class="stream-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Commerce Stream</h3>
+                <span class="fee-badge">₹25,000 / 2 Years</span>
+                <p>Business-focused curriculum covering Accountancy, Economics, Organisation of Commerce and Business Studies.</p>
+                <div class="stream-subjects">
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Accountancy & Economics</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> OC & Business Studies</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Mathematics / IT</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> English & EVS</div>
+                </div>
+            </div>
+            <div class="stream-card arts">
+                <div class="stream-icon"><i class="fas fa-palette"></i></div>
+                <h3>Arts Stream</h3>
+                <span class="fee-badge">Affordable Fees</span>
+                <p>A broad-based humanities education cultivating critical thinking, communication, and creative expression.</p>
+                <div class="stream-subjects">
+                    <div class="subject-tag"><i class="fas fa-circle"></i> History & Geography</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Political Science</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Psychology / Sociology</div>
+                    <div class="subject-tag"><i class="fas fa-circle"></i> Languages & EVS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DEGREE PROGRAMS -->
+<section>
+    <div class="container">
+        <span class="section-tag">Undergraduate Degrees</span>
+        <h2 class="section-title">Degree College <span>Programs</span></h2>
+        <div class="divider"></div>
+        <div class="degree-grid">
+
+            <div class="degree-card">
+                <div class="degree-header">
+                    <div class="degree-cat">Commerce</div>
+                    <h3>Bachelor of Commerce</h3>
+                    <div class="degree-sub">B.Com</div>
+                </div>
+                <div class="degree-body">
+                    <p>A comprehensive commerce degree covering accounting, finance, taxation, auditing and business law — ideal for careers in banking, finance and entrepreneurship.</p>
+                    <div class="degree-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 3 Years</span>
+                        <span class="meta-item"><i class="fas fa-users"></i> Open for All</span>
+                    </div>
+                </div>
+                <div class="degree-footer">
+                    <div class="degree-fee">₹25,000<small>Total Program Fee</small></div>
+                    <a href="contact.html" class="apply-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="degree-card">
+                <div class="degree-header">
+                    <div class="degree-cat">Commerce</div>
+                    <h3>Bachelor of Accounting & Finance</h3>
+                    <div class="degree-sub">BAF</div>
+                </div>
+                <div class="degree-body">
+                    <p>Specialised program in financial accounting, cost accounting, taxation and financial management preparing students for CA, CMA pathways.</p>
+                    <div class="degree-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 3 Years</span>
+                        <span class="meta-item"><i class="fas fa-briefcase"></i> Finance Focused</span>
+                    </div>
+                </div>
+                <div class="degree-footer">
+                    <div class="degree-fee">₹60,000<small>Total Program Fee</small></div>
+                    <a href="contact.html" class="apply-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="degree-card">
+                <div class="degree-header">
+                    <div class="degree-cat">Management</div>
+                    <h3>Bachelor of Management Studies</h3>
+                    <div class="degree-sub">BMS</div>
+                </div>
+                <div class="degree-body">
+                    <p>An industry-ready management program covering marketing, HR, operations and business strategy with real-world exposure and internships.</p>
+                    <div class="degree-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 3 Years</span>
+                        <span class="meta-item"><i class="fas fa-building"></i> Industry Links</span>
+                    </div>
+                </div>
+                <div class="degree-footer">
+                    <div class="degree-fee">₹60,000<small>Total Program Fee</small></div>
+                    <a href="contact.html" class="apply-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="degree-card">
+                <div class="degree-header">
+                    <div class="degree-cat">Technology</div>
+                    <h3>Bachelor of Science — Information Technology</h3>
+                    <div class="degree-sub">BSc.IT</div>
+                </div>
+                <div class="degree-body">
+                    <p>Hands-on IT education covering programming, database management, networking, web development and software engineering for a technology career.</p>
+                    <div class="degree-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 3 Years</span>
+                        <span class="meta-item"><i class="fas fa-laptop-code"></i> Practical Focus</span>
+                    </div>
+                </div>
+                <div class="degree-footer">
+                    <div class="degree-fee">₹70,000<small>Total Program Fee</small></div>
+                    <a href="contact.html" class="apply-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="degree-card">
+                <div class="degree-header">
+                    <div class="degree-cat">Technology</div>
+                    <h3>Bachelor of Science — Computer Science</h3>
+                    <div class="degree-sub">BSc.CS</div>
+                </div>
+                <div class="degree-body">
+                    <p>Deep dive into algorithms, data structures, AI, machine learning and software development — building the next generation of technology innovators.</p>
+                    <div class="degree-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 3 Years</span>
+                        <span class="meta-item"><i class="fas fa-brain"></i> AI &amp; ML Modules</span>
+                    </div>
+                </div>
+                <div class="degree-footer">
+                    <div class="degree-fee">₹70,000<small>Total Program Fee</small></div>
+                    <a href="contact.html" class="apply-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="degree-card">
+                <div class="degree-header">
+                    <div class="degree-cat">Media</div>
+                    <h3>Bachelor of Mass Media &amp; Communication</h3>
+                    <div class="degree-sub">BAMMC</div>
+                </div>
+                <div class="degree-body">
+                    <p>Journalism, advertising, PR, digital media and filmmaking — a dynamic program for the modern communications industry with studio practice.</p>
+                    <div class="degree-meta">
+                        <span class="meta-item"><i class="fas fa-clock"></i> 3 Years</span>
+                        <span class="meta-item"><i class="fas fa-video"></i> Studio Access</span>
+                    </div>
+                </div>
+                <div class="degree-footer">
+                    <div class="degree-fee">₹60,000<small>Total Program Fee</small></div>
+                    <a href="contact.html" class="apply-link">Apply Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- STUDENT SUPPORT -->
+<section class="support-bg">
+    <div class="container">
+        <div style="text-align:center;margin-bottom:48px;">
+            <span class="section-tag">Student Welfare</span>
+            <h2 class="section-title">Student Support <span>Services</span></h2>
+        </div>
+        <div class="support-grid">
+            <div class="support-card">
+                <div class="support-icon"><i class="fas fa-briefcase"></i></div>
+                <h4>Career Counseling & Placement</h4>
+                <p>Dedicated placement cell connecting students with top employers, internship programmes, and career guidance.</p>
+            </div>
+            <div class="support-card">
+                <div class="support-icon"><i class="fas fa-user-graduate"></i></div>
+                <h4>Mentoring & Remedial Coaching</h4>
+                <p>Personalised mentoring and additional coaching sessions for students who need extra academic support.</p>
+            </div>
+            <div class="support-card">
+                <div class="support-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                <h4>Scholarships & Financial Aid</h4>
+                <p>Merit and need-based scholarships for economically weaker sections, tribal and OBC communities.</p>
+            </div>
+            <div class="support-card">
+                <div class="support-icon"><i class="fas fa-heartbeat"></i></div>
+                <h4>Health & Wellness Programs</h4>
+                <p>Mental health awareness sessions, yoga, fitness programmes and a holistic approach to student well-being.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEES SUMMARY -->
+<section class="fees-bg">
+    <div class="container">
+        <div style="margin-bottom:48px;">
+            <span class="section-tag" style="background:rgba(247,148,29,0.15);border-color:rgba(247,148,29,0.3);">Fee Structure</span>
+            <h2 class="section-title" style="color:var(--white);">Tentative Fees <span>Structure</span></h2>
+            <div class="divider"></div>
+        </div>
+        <div class="fees-grid">
+            <div class="fees-block">
+                <h3><i class="fas fa-university" style="color:var(--orange);margin-right:10px;"></i>Degree College</h3>
+                <div class="fees-row"><span class="course-name">B.Com <span class="course-dur">(3 Years)</span></span><span class="course-fee">₹25,000</span></div>
+                <div class="fees-row"><span class="course-name">BAF <span class="course-dur">(3 Years)</span></span><span class="course-fee">₹60,000</span></div>
+                <div class="fees-row"><span class="course-name">BMS <span class="course-dur">(3 Years)</span></span><span class="course-fee">₹60,000</span></div>
+                <div class="fees-row"><span class="course-name">BSc.IT <span class="course-dur">(3 Years)</span></span><span class="course-fee">₹70,000</span></div>
+                <div class="fees-row"><span class="course-name">BSc.CS <span class="course-dur">(3 Years)</span></span><span class="course-fee">₹70,000</span></div>
+                <div class="fees-row"><span class="course-name">BAMMC <span class="course-dur">(3 Years)</span></span><span class="course-fee">₹60,000</span></div>
+                <div class="fees-note"><strong>Note:</strong> Fees shown are total programme fees. Semester-wise and annual instalment plans are available. Scholarships and fee waivers available for eligible students.</div>
+            </div>
+            <div class="fees-block">
+                <h3><i class="fas fa-school" style="color:var(--blue);margin-right:10px;"></i>Junior College</h3>
+                <div class="fees-row"><span class="course-name">11th & 12th Science <span class="course-dur">(2 Years)</span></span><span class="course-fee">₹50,000</span></div>
+                <div class="fees-row"><span class="course-name">11th & 12th Commerce <span class="course-dur">(2 Years)</span></span><span class="course-fee">₹25,000</span></div>
+                <div class="fees-note" style="margin-top:24px;"><strong>Future Programs:</strong> Arts stream fees, Night College for working students, and Distance Learning programs will be announced in due course. Contact admissions for current details.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- QUALITY & SUSTAINABILITY -->
+<section>
+    <div class="container">
+        <div style="text-align:center;margin-bottom:48px;">
+            <span class="section-tag">Our Standards</span>
+            <h2 class="section-title">Quality & <span>Sustainability</span></h2>
+        </div>
+        <div class="qs-grid">
+            <div class="qs-card">
+                <h3><i class="fas fa-award"></i> Quality Assurance Measures</h3>
+                <ul class="qs-list">
+                    <li><i class="fas fa-check-circle"></i> Periodic curriculum reviews with industry input</li>
+                    <li><i class="fas fa-check-circle"></i> Annual academic audits for continuous improvement</li>
+                    <li><i class="fas fa-check-circle"></i> Student feedback and parent-teacher interaction forums</li>
+                    <li><i class="fas fa-check-circle"></i> NAAC accreditation planning for degree college stage</li>
+                    <li><i class="fas fa-check-circle"></i> Industry tie-ups for real-world curriculum alignment</li>
+                </ul>
+            </div>
+            <div class="qs-card">
+                <h3><i class="fas fa-leaf"></i> Sustainability Initiatives</h3>
+                <ul class="qs-list">
+                    <li><i class="fas fa-solar-panel"></i> Green campus — solar panels, waste management, water harvesting</li>
+                    <li><i class="fas fa-laptop"></i> Digital transformation — ERP system, e-learning, virtual labs</li>
+                    <li><i class="fas fa-certificate"></i> Skill-based short-term certification programmes</li>
+                    <li><i class="fas fa-users"></i> NSS residential camps promoting community service</li>
+                    <li><i class="fas fa-building"></i> Competitive Examination Centre with mock tests & study material</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+    <h2>Ready to Shape Your Future?</h2>
+    <p>Apply today and take the first step toward a career-defining education at Jivan Foundation.</p>
+    <div class="cta-btns">
+        <a href="contact.html" class="cta-btn primary">Apply Now</a>
+        <a href="about.html" class="cta-btn secondary">Learn About Us</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-brand">
+            <img src="../assets/images/logo.jpg" alt="Jivan Foundation">
+            <p>A premier educational institution dedicated to nurturing innovation, inclusivity, and lifelong learning.</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-col"><h5>Programs</h5><ul>
+            <li><a href="#">Junior College</a></li><li><a href="#">B.Com</a></li>
+            <li><a href="#">BAF / BMS</a></li><li><a href="#">BSc.IT / BSc.CS</a></li><li><a href="#">BAMMC</a></li>
+        </ul></div>
+        <div class="footer-col"><h5>Contact</h5>
+            <div class="contact-line"><i class="fas fa-map-marker-alt"></i><span>Kalyan, Maharashtra</span></div>
+            <div class="contact-line"><i class="fas fa-globe"></i><a href="https://jivanfoundation.in">jivanfoundation.in</a></div>
+        </div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Jivan Foundation. All Rights Reserved.</div>
+</footer>
+
+<script>document.getElementById('hamburger').addEventListener('click',function(){this.classList.toggle('active');document.getElementById('navMenu').classList.toggle('open');});</script>
+</body>
+</html>
