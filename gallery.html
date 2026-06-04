@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery / Events – Jivan Foundation</title>
+  <meta name="description" content="Year-wise event gallery and PDF reports from Jivan Foundation activities – 2023-24 and 2024-25." />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="images/logo.jpg" alt="Jivan Foundation Logo" /></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="governing-body.html">Governing Body</a></li>
+        <li class="nav-item"><a class="nav-link" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link active" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-2"><a class="nav-link btn-donate" href="contact.html">Donate</a></li>
+        <li class="nav-item ms-1"><a class="nav-link btn-volunteer" href="contact.html">Volunteer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Gallery / Events</h1>
+    <p style="color:rgba(255,255,255,0.8); margin-top:0.5rem;">Year-wise Activities and Event Reports</p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li>
+        <li class="breadcrumb-item active">Gallery</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section style="padding:60px 0; background:var(--light-bg);">
+  <div class="container">
+
+    <!-- Year tabs -->
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+      <span style="font-weight:700; color:var(--blue-dark); margin-right:0.5rem; font-size:0.95rem;">
+        <i class="bi bi-calendar3 me-1"></i> Select Year:
+      </span>
+      <button class="year-tab-btn" data-year="2023-24"
+        onclick="selectYear('2023-24', this)">
+        2023–24
+      </button>
+      <button class="year-tab-btn active" data-year="2024-25"
+        onclick="selectYear('2024-25', this)">
+        2024–25
+      </button>
+      <!-- Add future years here: just copy the button above and update the year -->
+    </div>
+
+    <!-- Document type tabs -->
+    <div class="d-flex flex-wrap align-items-center gap-2 mb-4">
+      <span style="font-weight:700; color:var(--blue-dark); margin-right:0.5rem; font-size:0.95rem;">
+        <i class="bi bi-file-earmark-pdf me-1"></i> Document Type:
+      </span>
+      <button class="type-tab-btn active" data-type="Events"
+        onclick="selectType('Events', this)">
+        <i class="bi bi-calendar-event me-1"></i>Event Reports
+      </button>
+      <button class="type-tab-btn" data-type="Gallery"
+        onclick="selectType('Gallery', this)">
+        <i class="bi bi-images me-1"></i>Photo Gallery
+      </button>
+    </div>
+
+    <!-- PDF Viewer -->
+    <div class="pdf-viewer-wrap">
+      <!-- Toolbar -->
+      <div class="pdf-toolbar">
+        <span><i class="bi bi-file-earmark-pdf me-2"></i><span id="pdfTitle">2024–25 — Events</span></span>
+        <a id="pdfDownloadBtn" href="src/Event_2024-25.pdf" download
+           style="color:rgba(255,255,255,0.7); font-size:0.85rem; text-decoration:none; transition:color 0.2s;">
+          <i class="bi bi-download me-1"></i>Download PDF
+        </a>
+      </div>
+
+      <!-- Placeholder shown before PDF loads -->
+      <div id="pdfPlaceholder" class="pdf-placeholder" style="display:none;">
+        <i class="bi bi-file-earmark-pdf" style="font-size:4rem; color:var(--orange); opacity:0.4; margin-bottom:1rem;"></i>
+        <p class="text-muted">Select a year and document type above to view the report.</p>
+      </div>
+
+      <!-- PDF iframe -->
+      <iframe
+        id="pdfViewer"
+        class="pdf-viewer-frame"
+        src="src/Event_2024-25.pdf"
+        title="Jivan Foundation Event Report"
+        aria-label="PDF document viewer">
+        <p>Your browser does not support embedded PDFs.
+          <a href="src/Event_2024-25.pdf" target="_blank">Click here to download the PDF</a>.
+        </p>
+      </iframe>
+    </div>
+
+    <!-- Mobile fallback notice -->
+    <div class="alert mt-3" style="background:rgba(245,166,35,0.1); border:1px solid rgba(245,166,35,0.3); border-radius:10px; color:var(--orange-dark); font-size:0.88rem;">
+      <i class="bi bi-info-circle me-2"></i>
+      If the PDF does not display on your device,
+      <a id="pdfOpenLink" href="src/Event_2024-25.pdf" target="_blank" style="color:var(--orange); font-weight:700;">click here to open it in a new tab</a>.
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW TO ADD NEW YEAR (comment for site owner) -->
+<!--
+  TO ADD A NEW YEAR (e.g., 2025-26):
+  1. Copy your PDF files into the /src/ folder:
+       src/Event_2025-26.pdf
+       src/Gallery_2025-26.pdf
+  2. Add a new year button in the "Select Year" section above:
+       <button class="year-tab-btn" data-year="2025-26" onclick="selectYear('2025-26', this)">2025–26</button>
+  3. Add the file paths in the pdfFiles object in the <script> below:
+       '2025-26': {
+         'Events':  'src/Event_2025-26.pdf',
+         'Gallery': 'src/Gallery_2025-26.pdf'
+       }
+  That's it! No other changes needed.
+-->
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <img src="images/logo.jpg" alt="Jivan Foundation" style="height:70px; margin-bottom:1rem;" />
+        <h5>Jivan Foundation</h5>
+        <p>A premier educational institution dedicated to nurturing innovation, inclusivity, and lifelong learning.</p>
+        <div class="social-links">
+          <a href="https://facebook.com/Jivan-Foundation-282395805658613" target="_blank" class="social-link"><i class="bi bi-facebook"></i></a>
+          <a href="https://instagram.com/jivan_foundation_2018" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/@jivanfoundation3815" target="_blank" class="social-link"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="governing-body.html">Governing Body</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Activities</h5>
+        <ul>
+          <li><a href="#">Health Camps</a></li>
+          <li><a href="#">Blood Donation</a></li>
+          <li><a href="#">Tree Plantation</a></li>
+          <li><a href="#">Yoga Programs</a></li>
+          <li><a href="#">Career Guidance</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Contact</h5>
+        <p><i class="bi bi-geo-alt me-2" style="color:var(--orange)"></i>6/20, Apurva Lake View, Annapurna Nagar, Adharwadi, Kalyan, Thane – 421301</p>
+        <p><i class="bi bi-telephone me-2" style="color:var(--orange)"></i><a href="tel:+918652712991">+91 8652712991</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Jivan Foundation. All Rights Reserved. | <em>A Perfect Way to Shape Your Life</em></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+  // ============================================================
+  // GALLERY PDF FILE MAP
+  // To add a new year, add an entry here + a button above.
+  // ============================================================
+  const pdfFiles = {
+    '2023-24': {
+      'Events':  'src/Event_2023-24.pdf',
+      'Gallery': 'src/Gallery_2023-24.pdf'
+    },
+    '2024-25': {
+      'Events':  'src/Event_2024-25.pdf',
+      'Gallery': 'src/Gallery_2024-25.pdf'
+    }
+    // Future years:
+    // '2025-26': { 'Events': 'src/Event_2025-26.pdf', 'Gallery': 'src/Gallery_2025-26.pdf' }
+  };
+
+  let activeYear = '2024-25';
+  let activeType = 'Events';
+
+  function updateViewer() {
+    const path = pdfFiles[activeYear] && pdfFiles[activeYear][activeType]
+      ? pdfFiles[activeYear][activeType]
+      : null;
+
+    const frame  = document.getElementById('pdfViewer');
+    const title  = document.getElementById('pdfTitle');
+    const dlBtn  = document.getElementById('pdfDownloadBtn');
+    const openLk = document.getElementById('pdfOpenLink');
+    const placeholder = document.getElementById('pdfPlaceholder');
+
+    const label  = activeYear + ' — ' + activeType;
+
+    if (title)  title.textContent = label;
+
+    if (path) {
+      if (frame)  { frame.src = path; frame.style.display = 'block'; }
+      if (placeholder) placeholder.style.display = 'none';
+      if (dlBtn)  { dlBtn.href = path; dlBtn.download = label.replace(/ /g,'_') + '.pdf'; }
+      if (openLk) { openLk.href = path; }
+    } else {
+      if (frame)  frame.style.display = 'none';
+      if (placeholder) placeholder.style.display = 'flex';
+    }
+  }
+
+  function selectYear(year, btn) {
+    activeYear = year;
+    document.querySelectorAll('.year-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateViewer();
+  }
+
+  function selectType(type, btn) {
+    activeType = type;
+    document.querySelectorAll('.type-tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateViewer();
+  }
+
+  // Handle URL params (from homepage links like gallery.html?year=2023-24&type=gallery)
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const yr = params.get('year');
+    const tp = params.get('type');
+
+    if (yr && pdfFiles[yr]) {
+      activeYear = yr;
+      document.querySelectorAll('.year-tab-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.year === yr);
+      });
+    }
+    if (tp) {
+      const typeMap = { 'gallery': 'Gallery', 'events': 'Events' };
+      const mapped = typeMap[tp.toLowerCase()];
+      if (mapped) {
+        activeType = mapped;
+        document.querySelectorAll('.type-tab-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.type === mapped);
+        });
+      }
+    }
+    updateViewer();
+  })();
+</script>
+</body>
+</html>

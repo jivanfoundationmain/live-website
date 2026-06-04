@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events – Jivan Foundation</title>
+  <meta name="description" content="Explore all events and activities organised by Jivan Foundation – health camps, yoga workshops, tree plantation, educational webinars and more." />
+  <link rel="icon" href="images/logo.jpg" type="image/jpeg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="images/logo.jpg" alt="Jivan Foundation Logo" /></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav align-items-center gap-1">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="governing-body.html">Governing Body</a></li>
+        <li class="nav-item"><a class="nav-link active" href="events.html">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item ms-2"><a class="nav-link btn-donate" href="contact.html">Donate</a></li>
+        <li class="nav-item ms-1"><a class="nav-link btn-volunteer" href="contact.html">Volunteer</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Events &amp; Activities</h1>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item"><a href="index.html" style="color:rgba(255,255,255,0.6)">Home</a></li>
+        <li class="breadcrumb-item active">Events</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<section style="padding:30px 0; background:var(--white); border-bottom:1px solid rgba(0,0,0,0.06);">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center gap-2">
+      <span style="font-weight:700; color:var(--blue-dark); margin-right:0.5rem;">Filter by Year:</span>
+      <button class="year-tab-btn active" data-filter="all" onclick="filterEvents('all', this)">All Years</button>
+      <button class="year-tab-btn" data-filter="2023-24" onclick="filterEvents('2023-24', this)">2023–24</button>
+      <button class="year-tab-btn" data-filter="2024-25" onclick="filterEvents('2024-25', this)">2024–25</button>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS CONTAINER -->
+<section style="padding:60px 0; background:var(--light-bg);">
+  <div class="container">
+    <div id="eventsContainer">
+      <div class="text-center py-5">
+        <div class="spinner-border" style="color:var(--orange);" role="status"></div>
+        <p class="mt-3 text-muted">Loading events…</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIEW FULL REPORTS CTA -->
+<section style="padding:60px 0; background:linear-gradient(135deg,var(--blue-dark),var(--blue)); color:#fff; text-align:center;">
+  <div class="container" data-aos>
+    <h3 style="color:#fff; margin-bottom:1rem;">View Detailed Event Reports</h3>
+    <p style="opacity:0.85; max-width:500px; margin:0 auto 2rem;">Download or read year-wise PDF event reports and gallery documentation from our Gallery page.</p>
+    <a href="gallery.html" class="btn" style="background:var(--orange); color:#fff; border-radius:30px; padding:0.75rem 2rem; font-weight:700;">Go to Gallery</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <img src="images/logo.jpg" alt="Jivan Foundation" style="height:70px; margin-bottom:1rem;" />
+        <h5>Jivan Foundation</h5>
+        <p>A premier educational institution dedicated to nurturing innovation, inclusivity, and lifelong learning.</p>
+        <div class="social-links">
+          <a href="https://facebook.com/Jivan-Foundation-282395805658613" target="_blank" class="social-link"><i class="bi bi-facebook"></i></a>
+          <a href="https://instagram.com/jivan_foundation_2018" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
+          <a href="https://www.youtube.com/@jivanfoundation3815" target="_blank" class="social-link"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="governing-body.html">Governing Body</a></li>
+          <li><a href="events.html">Events</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Activities</h5>
+        <ul>
+          <li><a href="#">Health Camps</a></li>
+          <li><a href="#">Blood Donation</a></li>
+          <li><a href="#">Tree Plantation</a></li>
+          <li><a href="#">Yoga Programs</a></li>
+          <li><a href="#">Career Guidance</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h5>Contact</h5>
+        <p><i class="bi bi-geo-alt me-2" style="color:var(--orange)"></i>6/20, Apurva Lake View, Annapurna Nagar, Adharwadi, Kalyan, Thane – 421301</p>
+        <p><i class="bi bi-telephone me-2" style="color:var(--orange)"></i><a href="tel:+918652712991">+91 8652712991</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Jivan Foundation. All Rights Reserved. | <em>A Perfect Way to Shape Your Life</em></p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></button>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Filter events by year
+function filterEvents(year, btn) {
+  document.querySelectorAll('.year-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.events-year-section').forEach(section => {
+    if (year === 'all') {
+      section.style.display = '';
+    } else {
+      // Check if section contains year label
+      const header = section.querySelector('.events-year-header');
+      if (header && header.textContent.includes(year)) {
+        section.style.display = '';
+      } else {
+        section.style.display = 'none';
+      }
+    }
+  });
+}
+
+// Auto-show all events on load
+window.addEventListener('load', function() {
+  // Trigger AOS for dynamically loaded events
+  setTimeout(() => {
+    document.querySelectorAll('[data-aos]').forEach(el => {
+      el.style.opacity = 1;
+      el.style.transform = 'none';
+    });
+  }, 500);
+});
+</script>
+</body>
+</html>
