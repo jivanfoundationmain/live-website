@@ -144,12 +144,13 @@ img { max-width: 100%; height: auto; }
   position: absolute;
   inset: 0;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.8s ease-in-out;
   background-size: cover;
   background-position: center;
 }
 
-.hero-slide.active { opacity: 1; }
+.hero-slide.active { opacity: 1; pointer-events: auto; }
 
 .hero-overlay {
   position: absolute;
@@ -716,7 +717,7 @@ section { padding: 80px 0; }
 }
 
 .member-photo {
-  height: 200px;
+  height: 500px;
   background: linear-gradient(135deg, var(--blue), var(--blue-dark));
   display: flex;
   align-items: center;
